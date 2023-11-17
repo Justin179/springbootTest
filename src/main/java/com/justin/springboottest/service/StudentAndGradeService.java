@@ -1,8 +1,10 @@
 package com.justin.springboottest.service;
 
 import com.justin.springboottest.models.CollegeStudent;
+import com.justin.springboottest.models.HistoryGrade;
 import com.justin.springboottest.models.MathGrade;
 import com.justin.springboottest.models.ScienceGrade;
+import com.justin.springboottest.repository.HistoryGradesDao;
 import com.justin.springboottest.repository.MathGradesDao;
 import com.justin.springboottest.repository.ScienceGradesDao;
 import com.justin.springboottest.repository.StudentDao;
@@ -30,6 +32,12 @@ public class StudentAndGradeService {
 
     @Autowired
     private ScienceGradesDao scienceGradesDao;
+
+    @Autowired
+    HistoryGrade historyGrade;
+
+    @Autowired
+    private HistoryGradesDao historyGradesDao;
 
     public void createStudent(String firstname, String lastname, String email){
         CollegeStudent student = new CollegeStudent(firstname,lastname,email);
@@ -73,6 +81,13 @@ public class StudentAndGradeService {
                 scienceGrade.setGrade(grade);
                 scienceGrade.setStudentId(studentId);
                 scienceGradesDao.save(scienceGrade);
+                return true;
+            }
+            if (gradeType.equals("history")){
+                historyGrade.setId(0);
+                historyGrade.setGrade(grade);
+                historyGrade.setStudentId(studentId);
+                historyGradesDao.save(historyGrade);
                 return true;
             }
         }
