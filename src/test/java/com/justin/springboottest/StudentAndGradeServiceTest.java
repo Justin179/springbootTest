@@ -1,6 +1,10 @@
 package com.justin.springboottest;
 
 import com.justin.springboottest.models.CollegeStudent;
+import com.justin.springboottest.models.MathGrade;
+import com.justin.springboottest.models.ScienceGrade;
+import com.justin.springboottest.repository.MathGradesDao;
+import com.justin.springboottest.repository.ScienceGradesDao;
 import com.justin.springboottest.repository.StudentDao;
 import com.justin.springboottest.service.StudentAndGradeService;
 import org.junit.jupiter.api.AfterEach;
@@ -30,6 +34,12 @@ public class StudentAndGradeServiceTest {
 
     @Autowired
     StudentDao studentDao;
+
+    @Autowired
+    MathGradesDao mathGradesDao;
+
+    @Autowired
+    ScienceGradesDao scienceGradesDao;
 
     @BeforeEach
     public void setupDatabase(){
@@ -67,6 +77,22 @@ public class StudentAndGradeServiceTest {
             studentList.add(collegeStudent);
         }
         assertEquals(5,studentList.size());
+    }
+
+    @Test
+    public void createGradeService(){
+
+        // create the grade
+        assertTrue(studentService.createGrade(80.50,1,"math"));
+        assertTrue(studentService.createGrade(80.50,1,"science"));
+
+
+        // get all grades with studentId
+        Iterable<MathGrade> mathGrades = mathGradesDao.findGradeByStudentId(1);
+        Iterable<ScienceGrade> scienceGrades = scienceGradesDao.findGradeByStudentId(1);
+
+        // verify there is grades
+        assertTrue(mathGrades.iterator().hasNext(),"student has math grades");
     }
 
     @AfterEach
