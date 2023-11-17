@@ -26,8 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -46,7 +45,7 @@ public class GradebookControllerTest {
     private MockMvc mockMvc;
 
     @Mock
-    private StudentAndGradeService studentAndGradeServiceMock;
+    private StudentAndGradeService studentCreateServiceMock;
 
     @Autowired
     StudentDao studentDao;
@@ -70,8 +69,8 @@ public class GradebookControllerTest {
         CollegeStudent student1 = new GradebookCollegeStudent("Eric","Roby","eric.roby@gmail.com");
         CollegeStudent student2 = new GradebookCollegeStudent("Chad","Darby","chad.darby@gmail.com");
         List<CollegeStudent> collegeStudents = new ArrayList<>(Arrays.asList(student1, student2));
-        when(studentAndGradeServiceMock.getGradebook()).thenReturn(collegeStudents);
-        assertIterableEquals(collegeStudents,studentAndGradeServiceMock.getGradebook());
+        when(studentCreateServiceMock.getGradebook()).thenReturn(collegeStudents);
+        assertIterableEquals(collegeStudents, studentCreateServiceMock.getGradebook());
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/"))
                 .andExpect(status().isOk()).andReturn();
@@ -82,6 +81,15 @@ public class GradebookControllerTest {
 
     @Test
     public void createStudentHttpRequest() throws Exception{
+
+        CollegeStudent student1 = new CollegeStudent("Eric", "Roby", "eric.roby@gmail.com");
+
+        List<CollegeStudent> collegeStudents = new ArrayList<>(Arrays.asList(student1));
+
+        when(studentCreateServiceMock.getGradebook()).thenReturn(collegeStudents);
+
+        assertEquals(collegeStudents,studentCreateServiceMock.getGradebook());
+
         MvcResult mvcResult = this.mockMvc.perform(post("/").contentType(MediaType.APPLICATION_JSON)
                         .param("firstname", request.getParameterValues("firstname"))
                         .param("lastname", request.getParameterValues("lastname"))
