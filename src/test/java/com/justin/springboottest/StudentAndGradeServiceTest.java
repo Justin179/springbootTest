@@ -13,7 +13,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,8 +45,8 @@ public class StudentAndGradeServiceTest {
 
     @Test
     public void isStudentNullCheck(){
-        assertTrue(studentService.checkIfStudentIsNull(1));
-        assertFalse(studentService.checkIfStudentIsNull(0));
+        assertTrue(studentService.checkIfStudentExists(1));
+        assertFalse(studentService.checkIfStudentExists(0));
     }
 
     @Test

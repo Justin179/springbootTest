@@ -102,6 +102,30 @@ public class GradebookControllerTest {
         assertNotNull(verifyStudent,"student should be found");
     }
 
+    @Test
+    public void deleteStudentHttpRequest() throws Exception{
+        assertTrue(studentDao.findById(1).isPresent());
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/delete/student/{id}", 1))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+
+        ModelAndViewAssert.assertViewName(modelAndView,"index");
+
+        assertFalse(studentDao.findById(1).isPresent());
+    }
+
+    @Test
+    public void deleteStudentHttpRequestErrorPage() throws Exception {
+
+        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/delete/student/{id}", 0))
+                .andExpect(status().isOk()).andReturn();
+
+        ModelAndView modelAndView = mvcResult.getModelAndView();
+        ModelAndViewAssert.assertViewName(modelAndView,"error");
+    }
+
     @AfterEach
     public void setupAfterTransaction(){
         jdbcTemplate.execute("DELETE FROM student");

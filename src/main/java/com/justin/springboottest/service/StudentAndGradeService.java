@@ -21,7 +21,7 @@ public class StudentAndGradeService {
         studentDao.save(student);
     }
 
-    public boolean checkIfStudentIsNull(int id) {
+    public boolean checkIfStudentExists(int id) {
         Optional<CollegeStudent> student = studentDao.findById(id);
         if (student.isPresent())
             return true;
