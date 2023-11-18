@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -50,6 +51,24 @@ public class GradebookControllerTest {
     @Autowired
     StudentDao studentDao;
 
+    @Value("${sql.scripts.create.student}")
+    private String sqlAddStudent;
+    @Value("${sql.scripts.create.math.grade}")
+    private String sqlAddMathGrade;
+    @Value("${sql.scripts.create.science.grade}")
+    private String sqlAddScienceGrade;
+    @Value("${sql.scripts.create.history.grade}")
+    private String sqlAddHistoryGrade;
+
+    @Value("${sql.scripts.delete.student}")
+    private String sqlDeleteStudent;
+    @Value("${sql.scripts.delete.math.grade}")
+    private String sqlDeleteMathGrade;
+    @Value("${sql.scripts.delete.science.grade}")
+    private String sqlDeleteScienceGrade;
+    @Value("${sql.scripts.delete.history.grade}")
+    private String sqlDeleteHistoryGrade;
+
     @BeforeAll
     public static void setup(){
         request = new MockHttpServletRequest();
@@ -61,7 +80,12 @@ public class GradebookControllerTest {
     @BeforeEach
     public void beforeEach(){
 //        jdbcTemplate.execute("DELETE FROM student");
-        jdbcTemplate.execute("insert into student(firstname, lastname, email_address) values ('Eric','Roby','eric.roby@gmail.com')");
+//        jdbcTemplate.execute("insert into student(firstname, lastname, email_address) values ('Eric','Roby','eric.roby@gmail.com')");
+
+        jdbcTemplate.execute(sqlAddStudent);
+        jdbcTemplate.execute(sqlAddMathGrade);
+        jdbcTemplate.execute(sqlAddScienceGrade);
+        jdbcTemplate.execute(sqlAddHistoryGrade);
     }
 
     @Test
@@ -81,6 +105,10 @@ public class GradebookControllerTest {
 
     @Test
     public void createStudentHttpRequest() throws Exception{
+        jdbcTemplate.execute(sqlDeleteStudent);
+        jdbcTemplate.execute(sqlDeleteMathGrade);
+        jdbcTemplate.execute(sqlDeleteScienceGrade);
+        jdbcTemplate.execute(sqlDeleteHistoryGrade);
 
         CollegeStudent student1 = new CollegeStudent("Eric", "Roby", "eric.roby@gmail.com");
 
@@ -128,6 +156,11 @@ public class GradebookControllerTest {
 
     @AfterEach
     public void setupAfterTransaction(){
-        jdbcTemplate.execute("DELETE FROM student");
+//        jdbcTemplate.execute("DELETE FROM student");
+
+        jdbcTemplate.execute(sqlDeleteStudent);
+        jdbcTemplate.execute(sqlDeleteMathGrade);
+        jdbcTemplate.execute(sqlDeleteScienceGrade);
+        jdbcTemplate.execute(sqlDeleteHistoryGrade);
     }
 }
