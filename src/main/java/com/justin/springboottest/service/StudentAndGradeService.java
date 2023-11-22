@@ -82,23 +82,26 @@ public class StudentAndGradeService {
             return false;
         }
 
+        CollegeStudent collegeStudent = studentDao.findById(studentId).get();
+        Iterable<MathGrade> mathGrades = mathGradesDao.findGradeByStudentId(studentId);
+
         if (grade>=0 && grade<=100){
             if (gradeType.equals("math")){
-                mathGrade.setId(0);
+//                mathGrade.setId(0);
                 mathGrade.setGrade(grade);
                 mathGrade.setStudentId(studentId);
                 mathGradesDao.save(mathGrade);
                 return true;
             }
             if (gradeType.equals("science")){
-                scienceGrade.setId(0);
+//                scienceGrade.setId(0);
                 scienceGrade.setGrade(grade);
                 scienceGrade.setStudentId(studentId);
                 scienceGradesDao.save(scienceGrade);
                 return true;
             }
             if (gradeType.equals("history")){
-                historyGrade.setId(0);
+//                historyGrade.setId(0);
                 historyGrade.setGrade(grade);
                 historyGrade.setStudentId(studentId);
                 historyGradesDao.save(historyGrade);
