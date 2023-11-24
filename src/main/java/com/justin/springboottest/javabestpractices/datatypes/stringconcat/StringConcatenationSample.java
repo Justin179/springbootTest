@@ -19,7 +19,7 @@ public class StringConcatenationSample {
         for (int i = 0; i < 10_000; i++) {
             numericalSequence += i;
         }
-        System.out.println(numericalSequence);
+//        System.out.println(numericalSequence);
     }
 
     private static void showGoodPractice() {
@@ -27,7 +27,7 @@ public class StringConcatenationSample {
         for (int i = 0; i < 10_000; i++) {
             numericalSequence.append(i);
         }
-        System.out.println(numericalSequence);
+//        System.out.println(numericalSequence);
     }
 
 }

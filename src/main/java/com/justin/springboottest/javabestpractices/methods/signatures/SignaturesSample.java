@@ -47,6 +47,7 @@ public class SignaturesSample {
         return counter;
     }
 
+    // use param classes like this
     record SearchIndexRange(int startIndex, int finishIndex) {
     }
 

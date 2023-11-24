@@ -2,7 +2,7 @@ package com.justin.springboottest.javabestpractices.datatypes.primitives;
 
 public class PrimitivesSample {
 
-    static Integer internalNumber;
+    static int internalNumber;
 
     public static void main(String[] args) {
 
