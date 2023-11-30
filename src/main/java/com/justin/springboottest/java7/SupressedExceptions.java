@@ -32,6 +32,7 @@ public class SupressedExceptions {
 			withJava7();
 		} catch (Exception ex) {
 			LOGGER.log(Level.SEVERE, ex.getMessage());
+
 			final Throwable[] suppressedExceptions = ex.getSuppressed();
 			final int numSuppressed = suppressedExceptions.length;
 			if (numSuppressed > 0) {

@@ -37,7 +37,7 @@ public class SimpleStream {
 		emptyStream.forEach(System.out::println);
 
 		//Stream.generate(new Random()::nextInt).forEach(System.out::println);
-		Stream.iterate(1, n->n+1).forEach(System.out::println);
+		// Stream.iterate(1, n->n+1).forEach(System.out::println); // 放這上來是怎樣
 	}
 
 }

@@ -33,11 +33,11 @@ public class JDBCEnhancements {
 	 *
 	 */
 	public static void viewResults() throws Exception {
-		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/organization", "root", "root");
+		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jpa?serverTimezone=Asia/Taipei&characterEncoding=utf-8", "root", "2315");
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery("select * from employee");) {
 			while (rs.next()) {
-				System.out.println(rs.getString("NAME") + "" + rs.getInt("AGE") + "" + rs.getString("DEPARTMENT"));
+				System.out.println(rs.getString("first_name") + " " + rs.getString("last_name") + " " + rs.getString("email"));
 			}
 		} catch (Exception e) {
 			throw e;
@@ -52,13 +52,14 @@ public class JDBCEnhancements {
 	 */
 	public static void createJdbcRowset() throws Exception {
 		try (JdbcRowSet jRS = RowSetProvider.newFactory().createJdbcRowSet();) {
-			jRS.setUrl("jdbc:mysql://localhost:3306/organization");
+			jRS.setUrl("jdbc:mysql://localhost:3306/jpa?serverTimezone=Asia/Taipei&characterEncoding=utf-8");
 			jRS.setUsername("root");
-			jRS.setPassword("root");
+			jRS.setPassword("2315");
 			jRS.setCommand("select * from employee");
 			jRS.execute();
+			System.out.println();
 			while (jRS.next()) {
-				System.out.println(jRS.getString("NAME") + "" + jRS.getInt("AGE") + "" + jRS.getString("DEPARTMENT"));
+				System.out.println(jRS.getString("first_name") + " " + jRS.getString("last_name") + " " + jRS.getString("email"));
 			}
 		} catch (Exception e) {
 			throw e;

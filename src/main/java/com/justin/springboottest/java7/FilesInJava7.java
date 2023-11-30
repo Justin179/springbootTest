@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class FilesInJava7 {
 
-	private static String HOME_DIR = "C:\\";
+	private static String HOME_DIR = "D:\\";
 
 	/**
 	 * @param args
@@ -32,7 +32,7 @@ public class FilesInJava7 {
 
 	private static void workingWithFiles() throws IOException {
 		
-		Path path = Paths.get(HOME_DIR, "java7", "Test.txt");
+		Path path = Paths.get(HOME_DIR, "jk", "Test.txt");
 		byte[] bytes = Files.readAllBytes(path);
 		String content = new String(bytes, StandardCharsets.UTF_8);
 		System.out.println("Content of the file is: " + content);

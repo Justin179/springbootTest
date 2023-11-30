@@ -9,6 +9,7 @@ public class LambdaExamples {
 		voidMethodWithNoParams();
 		voidMethodWithOneParam();
 		voidMethodWithTwoParams();
+
 		returnMethodWithTwoParams();
 	}
 

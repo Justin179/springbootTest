@@ -19,9 +19,9 @@ public class CompletableFutureExample {
 	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
-		runAsync();
-		supplyAsync();
-		thenApply();
+//		runAsync();
+//		supplyAsync();
+//		thenApply();
 		thenAccept();
 		System.out.println("Main thread");
 	}

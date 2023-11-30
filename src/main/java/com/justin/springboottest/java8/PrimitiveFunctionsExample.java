@@ -53,13 +53,14 @@ public class PrimitiveFunctionsExample {
 	 */
 	public static void main(String[] args) {
 
-		problemWithNormalFunctionalInterfaces();
-		predicatePrimitiveFunctions();
-		functionPrimitiveFunctions();
-		biFunctionPrimitiveFunctions();
-		consumerPrimitiveFunctions();
-		supplierPrimitiveFunctions();
-		unaryPrimitiveFunctions();
+//		problemWithNormalFunctionalInterfaces();
+//		predicatePrimitiveFunctions();
+//		functionPrimitiveFunctions();
+
+//		biFunctionPrimitiveFunctions();
+//		consumerPrimitiveFunctions();
+//		supplierPrimitiveFunctions();
+//		unaryPrimitiveFunctions();
 		binaryPrimitiveFunctions();
 
 	}
@@ -75,6 +76,7 @@ public class PrimitiveFunctionsExample {
 		// 3) Finally after business logic the return value has to be converted to
 		// Integer
 		// using AutoBoxing
+
 		Function<Integer, Integer> doubleTheValue = input -> input * 2;
 
 		int[] iparray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -89,88 +91,88 @@ public class PrimitiveFunctionsExample {
 
 	private static void predicatePrimitiveFunctions() {
 		IntPredicate checkInt = a -> a % 2 == 0;
-		System.out.println("Output from IntPredicate is : " + checkInt.test(10));
+		System.out.println("Output from IntPredicate is : " + checkInt.test(10)); // true
 
 		DoublePredicate checkDouble = a -> a % 2 == 0;
-		System.out.println("Output from DoublePredicate is : " + checkDouble.test(10.0));
+		System.out.println("Output from DoublePredicate is : " + checkDouble.test(10.0)); // true
 
 		LongPredicate checkLong = a -> a % 2 == 0;
-		System.out.println("Output from LongPredicate is : " + checkLong.test(1034497756));
+		System.out.println("Output from LongPredicate is : " + checkLong.test(1034497756)); // true
 
 	}
 
 	private static void functionPrimitiveFunctions() {
 		IntFunction<String> applyInt = a -> Integer.toString(a);
-		System.out.println("Output from IntFunction is : " + applyInt.apply(10));
+		System.out.println("Output from IntFunction is : " + applyInt.apply(10)); // 10
 
 		DoubleFunction<String> applyDouble = a -> Double.toString(a);
-		System.out.println("Output from DoubleFunction is : " + applyDouble.apply(10.0));
+		System.out.println("Output from DoubleFunction is : " + applyDouble.apply(10.0)); // 10.0
 
 		LongFunction<String> applyLong = a -> Long.toString(a);
-		System.out.println("Output from LongFunction is : " + applyLong.apply(1034497756));
+		System.out.println("Output from LongFunction is : " + applyLong.apply(1034497756)); // 1034497756
 
 		ToIntFunction<String> toInt = a -> Integer.parseInt(a);
-		System.out.println("Output from ToIntFunction is : " + toInt.applyAsInt("10"));
+		System.out.println("Output from ToIntFunction is : " + toInt.applyAsInt("10")); // 10
 
 		ToDoubleFunction<String> toDouble = a -> Double.parseDouble(a);
-		System.out.println("Output from ToDoubleFunction is : " + toDouble.applyAsDouble("10.0"));
+		System.out.println("Output from ToDoubleFunction is : " + toDouble.applyAsDouble("10.0")); // 10.0
 
 		ToLongFunction<String> toLong = a -> Long.parseLong(a);
-		System.out.println("Output from ToLongFunction is : " + toLong.applyAsLong("1034497756"));
+		System.out.println("Output from ToLongFunction is : " + toLong.applyAsLong("1034497756")); // 1034497756
 
 		IntToLongFunction intToLong = a -> (long) a;
-		System.out.println("Output from IntToLongFunction is : " + intToLong.applyAsLong(10));
+		System.out.println("Output from IntToLongFunction is : " + intToLong.applyAsLong(10)); // 10
 
 		IntToDoubleFunction intToDouble = a -> (double) a;
-		System.out.println("Output from IntToDoubleFunction is : " + intToDouble.applyAsDouble(10));
+		System.out.println("Output from IntToDoubleFunction is : " + intToDouble.applyAsDouble(10));// 10.0
 
 		LongToIntFunction longToInt = a -> (int) a;
-		System.out.println("Output from LongToIntFunction is : " + longToInt.applyAsInt(10344));
+		System.out.println("Output from LongToIntFunction is : " + longToInt.applyAsInt(10344)); // 10344
 
 		LongToDoubleFunction longToDouble = a -> (double) a;
-		System.out.println("Output from LongToDoubleFunction is : " + longToDouble.applyAsDouble(10344));
+		System.out.println("Output from LongToDoubleFunction is : " + longToDouble.applyAsDouble(10344)); // 10344.0
 
 		DoubleToIntFunction doubleToInt = a -> (int) a;
-		System.out.println("Output from DoubleToIntFunction is : " + doubleToInt.applyAsInt(10.0));
+		System.out.println("Output from DoubleToIntFunction is : " + doubleToInt.applyAsInt(10.0)); // 10
 
 		DoubleToLongFunction doubleToLong = a -> (long) a;
-		System.out.println("Output from DoubleToLongFunction is : " + doubleToLong.applyAsLong(10344.0));
+		System.out.println("Output from DoubleToLongFunction is : " + doubleToLong.applyAsLong(10344.0)); // 10344
 	}
 
 	private static void biFunctionPrimitiveFunctions() {
 		ToIntBiFunction<String, String> toIntBiFunc = (input1, input2) -> {
 			return (Integer.parseInt(input1) + Integer.parseInt(input2));
 		};
-		System.out.println("Output from ToIntBiFunction is : " + toIntBiFunc.applyAsInt("10", "20"));
+		System.out.println("Output from ToIntBiFunction is : " + toIntBiFunc.applyAsInt("10", "20")); // 30
 		
 		ToLongBiFunction<String, String> toLongBiFunc = (input1, input2) -> {
 			return (Long.parseLong(input1) + Long.parseLong(input2));
 		};
-		System.out.println("Output from ToLongBiFunction is : " + toLongBiFunc.applyAsLong("1045556", "2065767"));
+		System.out.println("Output from ToLongBiFunction is : " + toLongBiFunc.applyAsLong("1045556", "2065767")); // 3111323
 		
 		ToDoubleBiFunction<String, String> toDoubleBiFunc = (input1, input2) -> {
 			return (Double.parseDouble(input1) + Double.parseDouble(input2));
 		};
-		System.out.println("Output from ToDoubleBiFunction is : " + toDoubleBiFunc.applyAsDouble("10.0", "2.0"));
+		System.out.println("Output from ToDoubleBiFunction is : " + toDoubleBiFunc.applyAsDouble("10.0", "2.0")); // 12.0
 	}
 	
 	private static void consumerPrimitiveFunctions() {
-		IntConsumer intCons = a -> System.out.println("Output from IntConsumer:"+ a);
+		IntConsumer intCons = a -> System.out.println("Output from IntConsumer:"+ a); // 10
 		intCons.accept(10);
 		
-		LongConsumer longCons = a -> System.out.println("Output from LongConsumer:"+ a);
+		LongConsumer longCons = a -> System.out.println("Output from LongConsumer:"+ a); // 1004345
 		longCons.accept(1004345);
 		
-		DoubleConsumer doubleCons = a -> System.out.println("Output from DoubleConsumer:"+ a);
+		DoubleConsumer doubleCons = a -> System.out.println("Output from DoubleConsumer:"+ a); // 10.0
 		doubleCons.accept(10.0);
 		
-		ObjIntConsumer<String> objInt = (input,a) -> System.out.println("Output from ObjIntConsumer:"+ input+a);
+		ObjIntConsumer<String> objInt = (input,a) -> System.out.println("Output from ObjIntConsumer:"+ input+a); // Ten10
 		objInt.accept("Ten", 10);
 		
-		ObjLongConsumer<String> objLong = (input,a) -> System.out.println("Output from ObjLongConsumer:"+ input+a);
+		ObjLongConsumer<String> objLong = (input,a) -> System.out.println("Output from ObjLongConsumer:"+ input+a); // Thousand1000
 		objLong.accept("Thousand", 1000);
 		
-		ObjDoubleConsumer<String> objDouble = (input,a) -> System.out.println("Output from ObjDoubleConsumer:"+ input+a);
+		ObjDoubleConsumer<String> objDouble = (input,a) -> System.out.println("Output from ObjDoubleConsumer:"+ input+a); // Ten10.0
 		objDouble.accept("Ten", 10.0);
 	}
 	
@@ -210,12 +212,12 @@ public class PrimitiveFunctionsExample {
 	
 	private static void binaryPrimitiveFunctions() {
 		IntBinaryOperator intBinary = (a,b) -> a+b;
-		System.out.println("Output from IntBinaryOperator is : " + intBinary.applyAsInt(24,26));
+		System.out.println("Output from IntBinaryOperator is : " + intBinary.applyAsInt(24,26)); // 50
 		
 		LongBinaryOperator longBinary = (a,b) -> a+b;
 		System.out.println("Output from LongBinaryOperator is : " + longBinary.applyAsLong(456767,5768787));
 		
 		DoubleBinaryOperator doubleBinary = (a,b) -> a+b;
-		System.out.println("Output from DoubleBinaryOperator is : " + doubleBinary.applyAsDouble(4.5,45.45));
+		System.out.println("Output from DoubleBinaryOperator is : " + doubleBinary.applyAsDouble(4.5,45.45)); // 49.95
 	}
 }

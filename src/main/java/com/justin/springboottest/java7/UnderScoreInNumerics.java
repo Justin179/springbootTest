@@ -39,6 +39,7 @@ public class UnderScoreInNumerics {
 	 * 
 	 */
 	public static void withJava7() {
+		System.out.println("\nwithJava7: ");
 		int inum = 10_000_456;
 		System.out.println("Integer value using underscore is :" + inum);
 		long lnum = 10_000_456;

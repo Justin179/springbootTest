@@ -13,7 +13,8 @@ import java.io.IOException;
 
 /**
  * @author EazyBytes
- *
+ * till java 6, try should be followed by either catch or finally block, but from Java 7 we can only
+ * try with resource block without catch & finally blocks
  */
 public class TryWithResources {
 	
@@ -34,7 +35,7 @@ public class TryWithResources {
 	public static void beforeJava7() throws IOException {
 		BufferedReader br = null;
 		try {
-			br = new BufferedReader(new FileReader("C:/eazybytes.txt"));
+			br = new BufferedReader(new FileReader("D:/eazybytes.txt"));
 			String sCurrentLine;
 			while ((sCurrentLine = br.readLine()) != null) {
 				System.out.println(sCurrentLine);
@@ -50,7 +51,7 @@ public class TryWithResources {
 	 * @throws FileNotFoundException 
 	 */
 	public static void withJava7() throws FileNotFoundException, IOException {
-		try(BufferedReader br = new BufferedReader(new FileReader("C:/eazybytes.txt"));) {
+		try(BufferedReader br = new BufferedReader(new FileReader("D:/eazybytes.txt"));) {
 			String sCurrentLine;
 			while ((sCurrentLine = br.readLine()) != null) {
 				System.out.println(sCurrentLine);

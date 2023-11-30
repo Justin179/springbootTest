@@ -33,7 +33,7 @@ public class WatchServiceInJava7 {
 	 */
 	public static void directoryWatchService() throws Exception {
 		WatchService watchService = FileSystems.getDefault().newWatchService();
-		Path path = Paths.get("C:\\WatchService");
+		Path path = Paths.get("D:\\WatchService");
 		path.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY,
 				StandardWatchEventKinds.ENTRY_DELETE);
 		boolean poll = true;

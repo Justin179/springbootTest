@@ -21,23 +21,23 @@ import java.util.Spliterator;
 public class MiscellaneousExamples {
 
 	/**
-	 * @param args
+//	 * @param args
 	 */
-	public static void main(String[] args) {
-		listReplaceAll();
-		listSort();
-		spliterator();
-		forEachRemaining();
-		forEach();
-		mapEnhancements();
-		stringJoin();
-		arrayMethods();
-		numberMethods();
-		mathMethods();
-		objectsNullCheck();
-		booleanMethods();
+//	public static void main(String[] args) {
+//		listReplaceAll();
+//		listSort();
+//		spliterator();
+//		forEachRemaining();
+//		forEach();
+//		mapEnhancements();
+//		stringJoin();
+//		arrayMethods();
+//		numberMethods();
+//		mathMethods();
+//		objectsNullCheck();
+//		booleanMethods();
+//	}
 
-	}
 
 	private static void listReplaceAll() {
 		List<String> departmentList = new ArrayList<>();
@@ -149,16 +149,16 @@ public class MiscellaneousExamples {
 		System.out.println("Total null values in the list are: " + nullCount);
 		System.out.println("Total non-null values in the list are: " + nonNullCount);
 	}
-	
+
 	private static void booleanMethods() {
-		Boolean checkAnd = Boolean.logicalAnd(10>5, "Eazy".equals("Eazy"));
-		Boolean checkOr = Boolean.logicalOr(10>5, "Eazy".equals("Eazy Bytes"));
-		Boolean checkXor = Boolean.logicalXor(false,true);
+		Boolean checkAnd = Boolean.logicalAnd(10>5, "Eazy".equals("Eazy")); // true
+		Boolean checkOr = Boolean.logicalOr(10>5, "Eazy".equals("Eazy Bytes")); // true
+		Boolean checkXor = Boolean.logicalXor(false,true); // true
 		System.out.println(checkAnd);
 		System.out.println(checkOr);
 		System.out.println(checkXor);
 	}
-	
+
 	private static void numberMethods(){
 		int sum = Integer.sum(234, 4565);
 		int max = Integer.max(234, 4565);
@@ -167,7 +167,7 @@ public class MiscellaneousExamples {
 		System.out.println(max);
 		System.out.println(min);
 	}
-	
+
 	private static void mathMethods() {
 		long sum = Math.addExact(1234, 45456);
 		long sub = Math.subtractExact(1234, 45456);
@@ -190,12 +190,13 @@ public class MiscellaneousExamples {
 		System.out.println(floorMod);
 		System.out.println(nextDown);
 	}
-	
+
+	public static void main(String[] args) {arrayMethods();}
 	private static void arrayMethods() {
-		 int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 
+		 int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
                  13, 14, 15, 16, 17, 18, 19, 20 };
 		  Arrays.setAll(array, ele -> {
-			  return array[ele] = array[ele]*2;  
+			  return array[ele] = array[ele]*2;
 		  });
 		  System.out.println(Arrays.toString(array));
 		  

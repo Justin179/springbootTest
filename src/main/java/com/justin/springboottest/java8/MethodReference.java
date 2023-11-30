@@ -53,6 +53,7 @@ public class MethodReference {
 			return sum;
 		};
 		operation.performOperation(2, 3);
+
 		MethodReference methodRef = new MethodReference();
 		ArithmeticOperation instanceMethod = methodRef::performInstanceAddition;
 		instanceMethod.performOperation(2, 3);
@@ -65,6 +66,7 @@ public class MethodReference {
 	}
 
 	public static void staticMethodReference() {
+		// 自己寫
 		ArithmeticOperation operation = (a, b) -> {
 			int sum = a + b;
 			System.out.println("The sum of given input values using lambda is: " + sum);
@@ -72,6 +74,7 @@ public class MethodReference {
 		};
 		operation.performOperation(2, 3);
 
+		// vs 直接指過去 static method
 		ArithmeticOperation methodRef = MethodReference::performAddition;
 		methodRef.performOperation(2, 3);
 	}

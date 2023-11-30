@@ -24,6 +24,10 @@ public class Honda implements Vehicle {
 		System.out.println("Honda Auto pilot applied");
 	}
 
+	private static void sayHello() {
+		System.out.println("Hi, This is your favourite honda car");
+	}
+
 	/**
 	 * @param args
 	 */
@@ -33,9 +37,5 @@ public class Honda implements Vehicle {
 		honda.autoPilot();
 		Vehicle.sayHello();
 		Honda.sayHello();
-	}
-	
-	private static void sayHello() {
-		System.out.println("Hi, This is your favourite honda car");
 	}
 }

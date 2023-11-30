@@ -14,7 +14,7 @@ import java.nio.file.Paths;
  */
 public class PathsInJava7 {
 
-	private static String HOME_DIR = "C:\\";
+	private static String HOME_DIR = "D:\\";
 	
 	/**
 	 * @param args
@@ -28,8 +28,8 @@ public class PathsInJava7 {
 		Path path = Paths.get(HOME_DIR, "java7", "Test.txt");
 		Path fileName = path.getFileName();
 		System.out.println("File name is : "+fileName.toString());
-		System.out.println("Fiel system is : "+path.getFileSystem().toString());
-		System.out.println("Fiel system separator is : "+path.getFileSystem().getSeparator());
+		System.out.println("File system is : "+path.getFileSystem().toString());
+		System.out.println("File system separator is : "+path.getFileSystem().getSeparator());
 		for(int i=0;i<path.getNameCount();i++) {
 			Path subPath = path.getName(i);
 			System.out.println("Path location at index : "+(i+1)+" is "+subPath.toString());

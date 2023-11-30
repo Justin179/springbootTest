@@ -20,7 +20,7 @@ public class RequireNonNull {
 	}
 	
 	private static void processPersonDetails(Person person) {
-		Objects.requireNonNull(person, "Person object can't be null");
+		Objects.requireNonNull(person, "Person object can't be null"); // 直接炸，好處是不用寫if
 		System.out.println(person.getFirstName());
 		System.out.println(person.getLastName());
 	}
