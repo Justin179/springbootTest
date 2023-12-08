@@ -12,7 +12,7 @@ public class DisplayDataAdapter implements DatabaseDataConverter {
       float index = datum.position;
       String position = Integer.toString(datum.amount);
       DisplayData3rdParty dd = new DisplayData3rdParty(index, position);
-      returnList.add(dd);
+      returnList.add(dd); 
     }
     return returnList;
   }
